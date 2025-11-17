@@ -1,4 +1,4 @@
-name: Manual Deployment
+name: Deploy Manually
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ on:
           - development
 
       environment:
-        description: "Select environment to deploy"
+        description: "Select environment"
         required: true
         type: choice
         options:
@@ -21,11 +21,8 @@ on:
           - staging
           - development
 
-permissions:
-  contents: write
-
 jobs:
-  manual-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -38,15 +35,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm ci
 
-      - name: Set environment for Vite
+      - name: Set Vite environment
         run: echo "APP_ENV=${{ github.event.inputs.environment }}" >> $GITHUB_ENV
 
-      - name: Build Project
+      - name: Build project
         run: npm run build
 
       - name: Deploy to GitHub Pages
