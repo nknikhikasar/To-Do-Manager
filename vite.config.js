@@ -5,12 +5,12 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // Determine environment from GitHub Actions
 const env = process.env.APP_ENV;
-console.log("VITE BUILD ENV:", env, "BASE:", base);
 
 // GitHub project repo name
 const repo = "/To-Do-Manager";
 
 let base = `${repo}/`;
+console.log("VITE BUILD ENV:", env, "BASE:", base);
 
 if (env === "production") {
   base = `${repo}/`;
