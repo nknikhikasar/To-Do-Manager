@@ -6,25 +6,25 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 // Determine environment from GitHub Actions
 const env = process.env.APP_ENV;
 
-let base = "/";
+// GitHub project repo name
+const repo = "/To-Do-Manager";
+
+let base = `${repo}/`;
 
 if (env === "production") {
-  base = "/";
+  base = `${repo}/`;
 } else if (env === "staging") {
-  base = "/stage/";
+  base = `${repo}/stage/`;
 } else if (env === "development") {
-  base = "/dev/";
+  base = `${repo}/dev/`;
 }
 
 export default defineConfig({
   base,
-  plugins: [
-    vue(),
-    vueDevTools(),
-  ],
+  plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
 })
