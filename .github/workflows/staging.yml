@@ -3,7 +3,7 @@ name: CI/CD - Build, Test, and Deploy Vue App
 on:
   push:
     branches:
-      - main
+      - [staging]
 
 permissions:
   contents: write
