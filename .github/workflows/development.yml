@@ -31,7 +31,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           start: npm run dev
-          wait-on: 'https://nknikhikasar.github.io/To-Do-Manager/'
+          wait-on: 'https://nknikhikasar.github.io/To-Do-Manager/dev/'
           browser: chrome
           config: video=false
 
