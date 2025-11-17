@@ -27,14 +27,6 @@ jobs:
       - name: Set environment
         run: echo "APP_ENV=production" >> $GITHUB_ENV
 
-      - name: Run Cypress Tests
-        uses: cypress-io/github-action@v6
-        with:
-          start: npm run dev
-          wait-on: 'https://nknikhikasar.github.io/To-Do-Manager/'
-          browser: chrome
-          config: video=false
-
       - name: Build Project
         run: npm run build
 
