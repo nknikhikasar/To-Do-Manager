@@ -1,12 +1,23 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
-// https://vite.dev/config/
+// Determine environment from GitHub Actions
+const env = process.env.APP_ENV;
+
+let base = "/";
+
+if (env === "production") {
+  base = "/";
+} else if (env === "staging") {
+  base = "/stage/";
+} else if (env === "development") {
+  base = "/dev/";
+}
+
 export default defineConfig({
-  base: '/To-Do-Manager/', 
+  base,
   plugins: [
     vue(),
     vueDevTools(),
