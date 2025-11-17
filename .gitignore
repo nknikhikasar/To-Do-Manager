@@ -28,6 +28,8 @@ coverage
 
 .eslintcache
 
+package-lock.json
+
 # Cypress
 /cypress/videos/
 /cypress/screenshots/
