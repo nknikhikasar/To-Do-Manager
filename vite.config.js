@@ -3,22 +3,24 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
-// Determine environment from GitHub Actions
+// GitHub project repo name (no trailing slash)
+const repo = "To-Do-Manager";
+
+// Environment passed from GitHub Actions
 const env = process.env.APP_ENV;
 
-// GitHub project repo name
-const repo = "/To-Do-Manager";
-
-let base = `${repo}/`;
-console.log("VITE BUILD ENV:", env, "BASE:", base);
+// Correct base path per environment
+let base = `/${repo}/`; // default
 
 if (env === "production") {
-  base = `${repo}/`;
+  base = `/${repo}/`;
 } else if (env === "staging") {
-  base = `${repo}/stage/`;
+  base = `/${repo}/stage/`;
 } else if (env === "development") {
-  base = `${repo}/dev/`;
+  base = `/${repo}/dev/`;
 }
+
+console.log("⭐ VITE BUILD ENV:", env, "| BASE:", base);
 
 export default defineConfig({
   base,
@@ -28,4 +30,4 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-})
+});
