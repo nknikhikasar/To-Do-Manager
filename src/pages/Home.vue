@@ -7,7 +7,7 @@ const todoStore = useTodoStore()
 </script>
 
 <template>
-  <h2>Hello NK : Todo Manager</h2>
+  <h2>Hello NK 55: Todo Manager</h2>
   <AddTodo />
   <ul>
     <TodoItem
