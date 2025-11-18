@@ -1,4 +1,4 @@
-name: CI/CD - Build, Test, and Deploy Vue App
+name: 🚀 Staging - Build, Test, Deploy
 
 on:
   push:
@@ -24,10 +24,10 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Set environment
+      - name: Set environment (staging)
         run: echo "APP_ENV=staging" >> $GITHUB_ENV
 
-      - name: Run Cypress Tests
+      - name: Run Cypress Tests (local dev server)
         uses: cypress-io/github-action@v6
         with:
           start: npm run dev
@@ -38,9 +38,10 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      - name: Deploy to GitHub Pages (/stage folder)
+      - name: Deploy to GitHub Pages → /stage
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           destination_dir: stage
+          keep_files: true
