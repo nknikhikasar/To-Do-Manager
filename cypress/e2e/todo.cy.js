@@ -1,6 +1,6 @@
 describe('Todo App', () => {
   beforeEach(() => {
-    cy.visit(process.env.BASE_URL || "http://localhost:5173")
+    cy.visit(process.env.BASE_URL || "http://localhost:5173/To-Do-Manager/dev/")
   })
 
   it('adds a new todo', () => {
